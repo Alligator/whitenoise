@@ -7,7 +7,10 @@ isn't the following:
 
 install [python markdown](http://pythonhosted.org//Markdown)
 
-edit the variable at the top on convert.py to your taste. see [here](http://pythonhosted.org//Markdown/extensions/index.html#officially-supported-extensions). the default is ['extra', 'codehilite']
+edit the ext variable at the top of convert.py to include the extenions you
+want. see
+[here](http://pythonhosted.org//Markdown/extensions/index.html#officially-supported-extensions).
+the default is ['extra', 'codehilite']
 
 set up your directory structure like this:
 
@@ -18,8 +21,8 @@ set up your directory structure like this:
     markdown/           your markdown files
       2014-03-16-hello
       2014-02-16-why-would-you-do-this
-    html/               where the final html will go. symlink/upload this to
-                        your web directory or whatever.
+    html/               where the final html files will go. symlink/upload this
+                        to your web directory or whatever.
 
 run
 
