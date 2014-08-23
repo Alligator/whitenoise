@@ -11,7 +11,13 @@ want. see
 [here](http://pythonhosted.org//Markdown/extensions/index.html#officially-supported-extensions).
 the default is ['extra', 'codehilite']
 3. create "markdown" and "html" directories.
-4. modify the templates to your liking. here's what they are:
+4. modify the templates to your liking. see below for reference.
+5. write some posts in the markdown directory, prefix them with ISO dates (e.g.
+2014-23-08 for the 8th of August 2014) to manually set the posted date,
+otherwise it'll just be the file's modified time.
+6. run python convert.py
+
+## template reference
 
     template.html       overall page template used on every page.
                         $body - the body of whatever page
@@ -30,13 +36,6 @@ the default is ['extra', 'codehilite']
     post.html           the actual post page
                         $body - the body of post (the converted markdown).
 
-5. write some posts in the markdown directory, prefix them with ISO dates (e.g.
-2014-23-08 for the 8th of August 2014) to manually set the posted date,
-otherwise it'll just be the file's modified time.
-
-6. run
-
-    python convert.py
 
 ## ordering
 the post list on the index page is ordered by the original filenames. by
