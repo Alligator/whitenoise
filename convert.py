@@ -3,6 +3,8 @@ import sys
 import os
 import os.path as path
 import codecs
+import re
+from datetime import date
 from string import Template
 
 ext = ['codehilite', 'extra']
@@ -27,6 +29,8 @@ for root, dirs, files in os.walk(path.join(path.abspath('.'), 'markdown')):
 
 markdown_files.sort(key=lambda x: x[1], reverse=rev)
 
+dre = re.compile(r'\d{4}-[01]\d-[0-3]\d')
+
 index_list = ''
 for d, fi in markdown_files:
   print 'writing', fi + '.html'
@@ -36,7 +40,11 @@ for d, fi in markdown_files:
 
   mapping['title'] = md.split('#')[1].split('\n')[0][1:]
   mapping['body'] = html
-  mapping['date'] = fi[:10]
+  if len(fi) > 10 and dre.match(fi[:10]):
+    mapping['date'] = fi[:10]
+  else:
+    t = path.getmtime(path.join(markdown_path, fi))
+    mapping['date'] = date.fromtimestamp(t).isoformat()
   mapping['url'] = fi + '.html'
 
   post_html = template.substitute(title=mapping['title'], body=post.substitute(mapping))
